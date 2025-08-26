@@ -1,13 +1,9 @@
 package com.techelevator.custom.controller;
 
-import com.techelevator.custom.dao.CardDao;
-import com.techelevator.custom.dao.CardItemDao;
-import com.techelevator.custom.dao.StoreItemDao;
-import com.techelevator.custom.dao.UserDao;
+import com.techelevator.custom.dao.*;
 import com.techelevator.custom.exception.DaoException;
-import com.techelevator.custom.model.Card;
-import com.techelevator.custom.model.CardItem;
 import com.techelevator.custom.model.CardItemDto;
+import com.techelevator.custom.model.ItemDto;
 import com.techelevator.custom.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,13 +18,11 @@ import java.util.List;
 @PreAuthorize("hasRole('ADMIN')")
 public class UserController {
     private final UserDao userDao;
-    private final CardDao cardDao;
-    private final CardItemDao cardItemDao;
+    private final ItemDao itemDao;
 
-    public UserController(UserDao userDao, CardDao cardDao, CardItemDao cardItemDao) {
+    public UserController(UserDao userDao, ItemDao itemDao) {
         this.userDao = userDao;
-        this.cardDao = cardDao;
-        this.cardItemDao = cardItemDao;
+        this.itemDao = itemDao;
     }
 
     @GetMapping
@@ -50,10 +44,10 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/cards")
-    public List<CardItemDto> getUserCards(@PathVariable int userId) {
+    public List<ItemDto> getUserCards(@PathVariable int userId) {
         try {
-            // get all card instances where the user is the id
-            return cardItemDao.getCardItemsByUser(userId);
+            // get all items with the given userId
+            return itemDao.getItemDtosByUser(userId);
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }

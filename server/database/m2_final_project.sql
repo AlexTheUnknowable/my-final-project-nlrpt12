@@ -5,6 +5,7 @@ BEGIN TRANSACTION;
 -- Drop all db objects in the proper order
 -- *************************************************************************************************
 DROP TABLE IF EXISTS card_type CASCADE;
+DROP TABLE IF EXISTS item CASCADE;
 DROP TABLE IF EXISTS storeitem CASCADE;
 DROP TABLE IF EXISTS carditem CASCADE;
 DROP TABLE IF EXISTS type CASCADE;
@@ -52,6 +53,16 @@ CREATE TABLE storeitem (
     price numeric(10, 2) NOT NULL,
     CONSTRAINT PK_storeitem PRIMARY KEY (storeitem_id),
     CONSTRAINT FK_storeitem_carditem FOREIGN KEY(carditem_id) REFERENCES carditem(carditem_id)
+);
+
+CREATE TABLE item (
+	item_id SERIAL,
+	user_id int NOT NULL,
+	card_id int NOT NULL,
+	price numeric(10, 2),
+	CONSTRAINT PK_item PRIMARY KEY (item_id),
+	CONSTRAINT FK_item_user FOREIGN KEY (user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_item_card FOREIGN KEY (card_id) REFERENCES card(card_id)
 );
 
 CREATE TABLE card_type (
@@ -142,6 +153,23 @@ INSERT INTO storeitem (carditem_id, price) VALUES
     (6, 2.00),
     (10, 1.00),
     (14, 1.00);
+
+INSERT INTO item (user_id, card_id, price) VALUES
+	(1, 1, 1.00),
+	(1, 2, 2.00),
+	(1, 3, 3.00),
+	(1, 4, 1.50),
+	(1, 5, 1.50),
+	(1, 6, 2.00),
+	(1, 7, null),
+	(1, 8, null),
+	(1, 9, null),
+	(2, 1, null),
+	(2, 10, 1.00),
+	(2, 11, null),
+	(2, 12, null),
+	(3, 1, 1.00),
+	(3, 13, null);
 
 INSERT INTO card_type (card_id, type_id) VALUES
     (1, 12),

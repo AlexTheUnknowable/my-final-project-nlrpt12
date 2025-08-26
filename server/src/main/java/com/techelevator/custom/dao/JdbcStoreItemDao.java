@@ -115,7 +115,7 @@ public class JdbcStoreItemDao implements StoreItemDao {
         StoreItem updatedStoreItem = null;
         String sql = "UPDATE storeitem SET carditem_id = ?, price = ? WHERE storeitem_id = ?;";
         try {
-            int numberOfRows = jdbcTemplate.update(sql, storeItem.getCardItemId(), storeItem.getPrice());
+            int numberOfRows = jdbcTemplate.update(sql, storeItem.getCardItemId(), storeItem.getPrice()); // is this broken? no storeitem id?? lmao ig i never tested this
             if (numberOfRows == 0) {
                 throw new DaoException("0 rows affected, expected at least 1");
             } else {

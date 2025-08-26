@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1b76f58a-08cd-4fba-8c22-672bce93f2be",
+		"_postman_id": "e6c72325-6684-4b65-9453-dc3dd8b43cff",
 		"name": "M2-Final_Project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "43020875"
@@ -103,14 +103,41 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/users",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user's cards",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/1/cards",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"1",
+						"cards"
 					]
 				}
 			},
@@ -137,12 +164,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/cards",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"cards"
 					]
@@ -156,15 +181,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/cards/5",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/cards/1",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"cards",
-						"5"
+						"1"
 					]
 				}
 			},
@@ -187,7 +210,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"BIGGER MAN\",\r\n    \"rarity\": 5\r\n}",
+					"raw": "{\r\n    \"name\": \"New Card\",\r\n    \"rarity\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -195,12 +218,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/cards",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"cards"
 					]
@@ -225,7 +246,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"The Bird\",\r\n    \"rarity\": 3\r\n}",
+					"raw": "{\r\n    \"name\": \"New Card\",\r\n    \"rarity\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -233,15 +254,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/cards/22",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/cards/21",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"cards",
-						"22"
+						"21"
 					]
 				}
 			},
@@ -263,12 +282,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/cards/21",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/cards/21",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"cards",
 						"21"
@@ -293,14 +310,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/cards/mycards",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/mycards",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
-						"cards",
 						"mycards"
 					]
 				}
@@ -308,7 +322,10 @@
 			"response": []
 		},
 		{
-			"name": "Get a user's cards",
+			"name": "[OLD] Get a card item",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -322,24 +339,30 @@
 				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/cards",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/carditem/7",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
-						"users",
-						"1",
-						"cards"
+						"carditem",
+						"7"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Give a card to a user",
+			"name": "[OLD] Give a card to a user",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -355,7 +378,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": 1,\r\n    \"cardId\": 22\r\n}",
+					"raw": "{\r\n    \"userId\": 3,\r\n    \"cardId\": 20\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -363,12 +386,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/carditem",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/carditem",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"carditem"
 					]
@@ -377,7 +398,7 @@
 			"response": []
 		},
 		{
-			"name": "Remove a card from a user",
+			"name": "[OLD] Remove a card from a user",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -392,22 +413,20 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carditem/18",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/carditem/15",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"carditem",
-						"18"
+						"15"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get all store items",
+			"name": "[OLD] Get all store items",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -434,12 +453,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/store",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/store",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"store"
 					]
@@ -448,7 +465,7 @@
 			"response": []
 		},
 		{
-			"name": "Search for store items",
+			"name": "[OLD] Search for store items",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -475,19 +492,17 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/store?name=Bulbasaur",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/store?name=Char",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"store"
 					],
 					"query": [
 						{
 							"key": "name",
-							"value": "Bulbasaur"
+							"value": "Char"
 						}
 					]
 				}
@@ -495,7 +510,7 @@
 			"response": []
 		},
 		{
-			"name": "Get specific store item",
+			"name": "[OLD] Get specific store item",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -522,12 +537,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/store/8",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/store/8",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"store",
 						"8"
@@ -537,7 +550,7 @@
 			"response": []
 		},
 		{
-			"name": "Get my store items",
+			"name": "[OLD] Get my store items",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -564,12 +577,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/store/mycards",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/store/mycards",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"store",
 						"mycards"
@@ -579,7 +590,7 @@
 			"response": []
 		},
 		{
-			"name": "Put a card up for sale",
+			"name": "[OLD] Put a card up for sale",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -595,7 +606,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cardItemId\": 18,\r\n    \"price\": 50.00\r\n}",
+					"raw": "{\r\n    \"cardItemId\": 9,\r\n    \"price\": 50.00\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -603,12 +614,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/store",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/store",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"store"
 					]
@@ -617,7 +626,7 @@
 			"response": []
 		},
 		{
-			"name": "Take down store item",
+			"name": "[OLD] Take down store item",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -632,15 +641,148 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/store/5",
-					"protocol": "http",
+					"raw": "{{baseUrl}}/store/7",
 					"host": [
-						"localhost"
+						"{{baseUrl}}"
 					],
-					"port": "8080",
 					"path": [
 						"store",
-						"5"
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all items",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/items",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 3,\r\n    \"cardId\": 19,\r\n    \"price\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/items",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 3,\r\n    \"cardId\": 19,\r\n    \"price\": 5.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/items/16",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"items",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/items/16",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"items",
+						"16"
 					]
 				}
 			},
@@ -675,8 +817,8 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY1NzY0MzI3NH0.DVYTDK3fsn80scCDYSCxdN4itbTObMVVzlpJmNZd1pC-Uh1fjLwUPN-du-OjeUTFBtDWvEuPiVjXXd1L_Dzh-A",
-			"type": "default"
+			"value": "",
+			"type": "string"
 		}
 	]
 }

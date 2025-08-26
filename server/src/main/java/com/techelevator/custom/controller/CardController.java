@@ -50,27 +50,18 @@ public class CardController {
         }
     }
 
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/mycards")
-    public List<CardItemDto> getMyCards(Principal principal) {
-        try {
-//            List<Card> allCards = cardDao.getCards();
-//            List<Card> ownedCards = new ArrayList<>();
+//    moved to ItemController
+//    @PreAuthorize("isAuthenticated()")
+//    @GetMapping("/mycards")
+//    public List<CardItemDto> getMyCards(Principal principal) {
+//        try {
 //            User user = userDao.getUserByUsername(principal.getName());
 //            int userId = user.getId();
-//            for (Card card : allCards) {
-//                if (userDao.userOwnsCard(userId, card.getId())) {
-//                    ownedCards.add(card);
-//                }
-//            }
-//            return ownedCards;
-            User user = userDao.getUserByUsername(principal.getName());
-            int userId = user.getId();
-            return cardItemDao.getCardItemsByUser(userId);
-        } catch (DaoException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-        }
-    }
+//            return cardItemDao.getCardItemsByUser(userId);
+//        } catch (DaoException e) {
+//            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+//        }
+//    }
 
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
